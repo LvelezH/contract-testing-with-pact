@@ -1,0 +1,77 @@
+{
+  "consumer": {
+    "name": "playermessageclient"
+  },
+  "provider": {
+    "name": "playermessageservice"
+  },
+  "messages": [
+    {
+      "description": "a player message",
+      "metaData": {
+        "contentType": "application/json"
+      },
+      "contents": {
+        "messageUuid": "string",
+        "player": {
+          "city": "Madrid",
+          "surname": "Martinez",
+          "name": "Francisco",
+          "age": 38
+        }
+      },
+      "matchingRules": {
+        "body": {
+          "$.messageUuid": {
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ],
+            "combine": "AND"
+          },
+          "$.player.name": {
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ],
+            "combine": "AND"
+          },
+          "$.player.surname": {
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ],
+            "combine": "AND"
+          },
+          "$.player.city": {
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ],
+            "combine": "AND"
+          },
+          "$.player.age": {
+            "matchers": [
+              {
+                "match": "integer"
+              }
+            ],
+            "combine": "AND"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.0.10"
+    }
+  }
+}
